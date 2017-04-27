@@ -1,9 +1,10 @@
 # birds-feed-api
 Birds feed api provides access to data on birds. Its fun to do this abstract thing. This 
 is a simple token based authentication api, which expires in some minutes. 
-Its completely written with [Node](https://nodejs.org/en) and [hapi.js](https://hapijs.com/) frameworks.
+Its completely written with [Node](https://nodejs.org/en) and [hapi.js](https://hapijs.com/) framework.
 
 ## Dependencies.
+```
 "dependencies": {
     "babel-core": "^6.24.1",
     "hapi": "^16.1.1",
@@ -11,6 +12,7 @@ Its completely written with [Node](https://nodejs.org/en) and [hapi.js](https://
     "knex": "^0.12.9",
     "pg": "^6.1.5"
 }
+```
 
 ## Database
 * Postgres
