@@ -1,7 +1,5 @@
 
 exports.seed = function(knex, Promise) {
-
-  // Deletes ALL existing entries
   
     var tableName = 'users';
     var currentTime = new Date();
