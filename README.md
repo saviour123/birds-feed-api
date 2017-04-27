@@ -32,3 +32,6 @@ Its completely written with [Node](https://nodejs.org/en) and [hapi.js](https://
 ## Testing(any of your favourites): Recommended 
 * [Postman](https://www.getpostman.com/)
 * [httpie](https://httpie.org/)
+
+## License
+MIT
