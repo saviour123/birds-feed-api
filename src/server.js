@@ -2,10 +2,9 @@ import Hapi from 'hapi';
 import Knex from './knex.js';
 
 const server = new Hapi.Server();
-
-
 server.connection({port: 1337});
 
+// test route
 server.route({
     method: 'GET',
     path: '/',
@@ -13,6 +12,7 @@ server.route({
         reply('hello world');
     }
 });
+
 
 // registers a module inside the instance of the api
 server.register(require('hapi-auth-jwt'), (err) => {
@@ -47,10 +47,7 @@ server.route({
                 data: results,
             });
         
-        }).catch((err) => {
-            
-            reply('server-side error-injected');
-        });     
+        });
     }
 });
 
