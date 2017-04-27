@@ -19,11 +19,11 @@ Its completely written with [Node](https://nodejs.org/en) and [hapi.js](https://
 
 ## Instructions
 
-1. `git clone https://github.com/saviour123/birds-feed-api.git && cd birds-feed-api`
-2. `npm install` //Install the dependencies
+1. `$ git clone https://github.com/saviour123/birds-feed-api.git && cd birds-feed-api`
+2. `$ npm install` //Install the dependencies
 3. `$ sudo npm install -g knex`. //Install knex cli and create dbs with fun.
-4. `knex migrate:latest` Migrate/create the database with love
-5. `knex seed:run` //to add dummy data
+4. `$ knex migrate:latest` Migrate/create the database with love
+5. `$ knex seed:run` //to add dummy data
 
 
 ## Start the Server
