@@ -29,7 +29,7 @@ server.route({
     path: '/birds',
     method: 'GET',
     handler: (request, reply) => {
-        const getOperation = Knex('bird').where({
+        const getOperation = Knex('birds').where({
 
             isPublic: true
 
@@ -50,6 +50,9 @@ server.route({
         });
     }
 });
+
+
+
 
 //start server
 server.start((err) => {
