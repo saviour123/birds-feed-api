@@ -61,8 +61,37 @@ const routes = [
         });
     }
 
-}
+},
 
+{
+    path: '/birds',
+    method: 'POST',
+    config: {
+        auth: {
+            strategy: 'token',
+        }
+    },
+    handler: (request, reply) => {
+        const {bird} = request.payload;
+        const guid = GUID.v4();
+        const insertOperation = Knex('birds').insert({
+            owner: request.auth.credentials.scope,
+            name: bird.name,
+            species: bird.species,
+            picture_url: bird.picture_url,
+            guid,
+        }).then((res) => {
+            reply({
+                data: guid,
+                message: 'succesfully created bird'
+            });
+        }).catch((err) => {
+            reply('server-side error');
+        });
+        console.log( request.auth.credentials );
+    }       
+}
 ]
+//routes ends
 
 export default routes;
