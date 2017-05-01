@@ -56,38 +56,42 @@ server.route({
     method: 'POST',
     handler: (request, reply) => {
         const {username, password} = request.payload;
-        // const username = request.payload.username; es6
-        
         const getOperation = Knex('users').where({
             username,
-        }).select('guid', 'password').then([user]) => {
+        }).select('guid', 'password').then(([user]) => {
             if(!user){
                 reply({
                     error: true,
-                    errMessage: 'the user is not found',
+                    errMessage: 'user not found'
                 });
                 return;
             }
+            if(user.password = password){
+                const token = jwt.sign({
+                    username, 
+                    scope: user.guid,
+                }, 'vZiYpmTzqXMp8PpYXKwqc9ShQ1UhyAfy', {
+                    algorithm: 'HS256',
+                    expiresIn: '1h',
+                });
+                reply({
+                    token,
+                    scope: user.guid,
+                });
+            }else{
+                reply('incorrect password');
+            }
         }).catch((err) => {
-            reply('server-error');
+            reply('server -side error');
         });
-
-        if(user.password === password){
-            const token = jwt.sign({
-                
-            });
-        }
     }
 });
 
 
 //start server
-server.start((err) => {
+server.start(err => {
     if(err){
-        throw err;
+        console.error(error);
     }
-    console.log('server running at:' + server.info.uri);
+    console.log('server started at ' + server.info.uri );
 });
-
-
-
