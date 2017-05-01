@@ -51,7 +51,34 @@ server.route({
     }
 });
 
+server.route({
+    path: '/auth',
+    method: 'POST',
+    handler: (request, reply) => {
+        const {username, password} = request.payload;
+        // const username = request.payload.username; es6
+        
+        const getOperation = Knex('users').where({
+            username,
+        }).select('guid', 'password').then([user]) => {
+            if(!user){
+                reply({
+                    error: true,
+                    errMessage: 'the user is not found',
+                });
+                return;
+            }
+        }).catch((err) => {
+            reply('server-error');
+        });
 
+        if(user.password === password){
+            const token = jwt.sign({
+                
+            });
+        }
+    }
+});
 
 
 //start server
